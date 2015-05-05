@@ -5,7 +5,10 @@ close all
 currDir=arPath(arRootPath);
 
 newDir=currDir(1:end-10);
-newDir=[newDir,'DATA'];
+newDir=[newDir,'DATA\'];
+
+oldFolder=cd(newDir)
+cd(oldFolder)
 
 %% List of activity to analyze
 act={'Enter','Drink','Rorder','Leave'};
