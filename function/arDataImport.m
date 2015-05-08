@@ -30,21 +30,4 @@ for fi=1:size(files,1)
     end
 end
 
-
-
-
-
-
-
-data=0;
-
-
-
-
-
-
-
-
-
-
 cd(cd_old);

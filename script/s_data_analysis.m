@@ -20,8 +20,20 @@ ExpN=1;
 
 for si=1:length(Snum)
     for ei=1:length(ExpN)
-%         [skDir]=arDataDirectory(dataDir,si,ei,'skeleton');
         [data]=arDataImport(dataDir,si,ei,'skeleton','skeleton');
+        
+        numFrame=1;
+        
+        numJoint=size(data(numFrame,2:end),2);
+%         figure
+%         for ji=1:numJoint
+%             x=data(numFrame,3*ji-1);
+%             y=data(numFrame,3*ji);
+%             z=data(numFrame,3*ji+1);
+%             scatter3(x,y,z)
+%             hold on
+%         end
+        
     end
 end
 
@@ -36,30 +48,30 @@ end
 % ElbowR_NormVect =[dX,dY,dZ]  = {16,17,18}			 
 % HandL_NormVect =[dX,dY,dZ]   = {19,20,21}
 % ElbowL_NormVect =[dX,dY,dZ]   = {22,23,24}
-Fnum=[1];
-% %% List of activity to analyze
-% act={'Enter','Drink','Rorder','Leave'};
-
-
-
-%% 
-for ai=1:numel(act)
-    for si= 1:length (Snum)
-        for fi=1:length(Fnum)
-            % Get name of the data to analyzed
-            filename=[act{ai},' (',num2str(si),').txt'];
-%             data=importdata(filename);
-            data=importfile(filename);
-            
-            % Parameter list
-            % Time spend to perfom the action (in # of frame {time sampling
-            % 33 ms})
-            numFrame(si,ai)=size(data,1);
-            numFeature(si,ai)=size(data,2);
-            
-            
-            
-            
-        end
-    end
-end
+% Fnum=[1];
+% % %% List of activity to analyze
+% % act={'Enter','Drink','Rorder','Leave'};
+% 
+% 
+% 
+% %% 
+% for ai=1:numel(act)
+%     for si= 1:length (Snum)
+%         for fi=1:length(Fnum)
+%             % Get name of the data to analyzed
+%             filename=[act{ai},' (',num2str(si),').txt'];
+% %             data=importdata(filename);
+%             data=importfile(filename);
+%             
+%             % Parameter list
+%             % Time spend to perfom the action (in # of frame {time sampling
+%             % 33 ms})
+%             numFrame(si,ai)=size(data,1);
+%             numFeature(si,ai)=size(data,2);
+%             
+%             
+%             
+%             
+%         end
+%     end
+% end
