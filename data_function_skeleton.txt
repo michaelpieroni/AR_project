@@ -1,0 +1,38 @@
+\\ORDER OF SKELETON DATA   SKELETON= {rtn[0],rtn[1],.....,rtn[19]}           
+		    rtn[0] = JointType.FootRight;
+            rtn[1] = JointType.AnkleRight;
+            rtn[2] = JointType.KneeRight;
+            rtn[3] = JointType.HipRight;
+            rtn[4] = JointType.HipCenter;
+            rtn[5] = JointType.Spine;
+            rtn[6] = JointType.ShoulderCenter;
+            rtn[7] = JointType.ShoulderRight;
+            rtn[8] = JointType.ElbowRight;
+            rtn[9] = JointType.WristRight;
+            rtn[10] = JointType.HandRight;
+            rtn[11] = JointType.Head;
+            rtn[12] = JointType.HandLeft;
+            rtn[13] = JointType.WristLeft;
+            rtn[14] = JointType.ElbowLeft;
+            rtn[15] = JointType.ShoulderLeft;
+            rtn[16] = JointType.HipLeft;
+            rtn[17] = JointType.KneeLeft;
+            rtn[18] = JointType.AnkleLeft;
+            rtn[19] = JointType.FootLeft;
+          
+       --------------------------------------------
+		
+		\\FEATURE VECTOR EXTRACTED FROM SKELETON DATA
+		 seq = new double[]
+                                
+		{ 
+         Sub[0].roll_B , Sub[0].pitch_B ,Sub[0].yaw_B ,
+         Sub[0].roll_H , Sub[0].pitch_H , Sub[0].yaw_H ,
+         Sub[0].roll_Shoulder_right , Sub[0].pitch_Shoulder_right ,Sub[0].yaw_Shoulder_right,
+         Sub[0].roll_Shoulder_left , Sub[0].pitch_Shoulder_left ,Sub[0].yaw_Shoulder_left,
+        (Sub[0].x_Hand_right - Sub[0].x_Hipcenter) / NormalRH , (Sub[0].y_Hand_right - Sub[0].y_Hipcenter) / NormalRH , (Sub[0].z_Hand_right - Sub[0].z_Hipcenter) / NormalRH ,
+        (Sub[0].x_Elbow_right - Sub[0].x_Hipcenter) / NormalRE , (Sub[0].y_Elbow_right - Sub[0].y_Hipcenter) / NormalRE,(Sub[0].z_Elbow_right - Sub[0].z_Hipcenter) / NormalRE ,
+        (Sub[0].x_Hand_left - Sub[0].x_Hipcenter) / NormalLH , (Sub[0].y_Hand_left - Sub[0].y_Hipcenter) / NormalLH , (Sub[0].z_Hand_left - Sub[0].z_Hipcenter) / NormalLH ,
+        (Sub[0].x_Elbow_left - Sub[0].x_Hipcenter) / NormalLE , (Sub[0].y_Elbow_left - Sub[0].y_Hipcenter) / NormalLE , (Sub[0].z_Elbow_left - Sub[0].z_Hipcenter) / NormalLE ,
+         Sub[0].eyeContact , Sub[0].drinkServed , Sub[0].speakingOrder , Sub[0].speakingGoodbye , Sub[0].groupDiscussion 
+        };

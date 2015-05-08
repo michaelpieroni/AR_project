@@ -46,7 +46,7 @@ if nargout>=1
         % 2 {datafile all in \DATA arranged at 3 livels: liv1=> subject
         % [Sub1,Sub2,Subi,etc.]; liv2=> experiment [Ex1,Ex2,Exi,etc.]; liv3=> [FeatureVector, Skeleton]}
         
-        dataDir=currDir(1:end-10); dataDir=[newDir,'DATA\'];
+        newDir=arDir(1:end-10); dataDir=[newDir,'DATA\'];
         varargout{2}=dataDir;
     end
         

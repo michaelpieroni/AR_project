@@ -1,16 +1,31 @@
 clear all
 close all
 
-%% ADD path
-[currDir,dataDir]=arPath(arRootPath);
+%% In this script we compute the Feature Vector from orginal skeleton data
 
 
+%% STANDARD INITIALIZATION
+%%ADD path
+[relDir,dataDir]=arPath(arRootPath);
+addpath(relDir);
+% DO NOT add dataDir to avoid same several files with the same name
 
-%% List of activity to analyze
-act={'Enter','Drink','Rorder','Leave'};
 
 %% Listo of subject to analyze
-Snum=[1:30];
+Snum=[1];
+
+
+%% Listo of exp to analyze
+ExpN=1;
+
+for si=1:length(Snum)
+    for ei=1:length(ExpN)
+%         [skDir]=arDataDirectory(dataDir,si,ei,'skeleton');
+        [data]=arDataImport(dataDir,si,ei,'skeleton','skeleton');
+    end
+end
+
+
 
 %% List of feature to analyze in Abu2014
 % Body_Or =[roll,pitch,yaw] = {1,2,3}
@@ -22,6 +37,8 @@ Snum=[1:30];
 % HandL_NormVect =[dX,dY,dZ]   = {19,20,21}
 % ElbowL_NormVect =[dX,dY,dZ]   = {22,23,24}
 Fnum=[1];
+% %% List of activity to analyze
+% act={'Enter','Drink','Rorder','Leave'};
 
 
 
