@@ -2,10 +2,9 @@ clear all
 close all
 
 %% ADD path
-currDir=arPath(arRootPath);
+[currDir,dataDir]=arPath(arRootPath);
 
-newDir=currDir(1:end-10);
-newDir=[newDir,'DATA'];
+
 
 %% List of activity to analyze
 act={'Enter','Drink','Rorder','Leave'};
