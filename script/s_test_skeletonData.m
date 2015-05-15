@@ -20,19 +20,22 @@ ExpN=1;
 
 for si=1:length(Snum)
     for ei=1:length(ExpN)
-        [data]=arDataImport(dataDir,si,ei,'skeleton','skeleton');
+        [data]=arDataImport(dataDir,si,ei,'skeleton','angle&skeleton');
         
         numFrame=1;
         
-        numJoint=size(data(numFrame,2:end),2);
+        numJoint=arGet(data,'number of joint');
+%         numJoint=(size(data(numFrame,2:end),2))/3;
+        dataPos=arGet(data,'position');
         figure
         for ji=1:numJoint
-            x=data(numFrame,3*ji-1);
-            y=data(numFrame,3*ji);
-            z=data(numFrame,3*ji+1);
-            scatter3(x,y,z)
+            vx(ji)=dataPos(numFrame,3*ji-1);
+            vy(ji)=dataPos(numFrame,3*ji);
+            vz(ji)=dataPos(numFrame,3*ji+1);
+            scatter3(vx(ji),vy(ji),vz(ji))   
             hold on
         end
+        
         
     end
 end
