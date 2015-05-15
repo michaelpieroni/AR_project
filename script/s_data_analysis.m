@@ -25,14 +25,14 @@ for si=1:length(Snum)
         numFrame=1;
         
         numJoint=size(data(numFrame,2:end),2);
-%         figure
-%         for ji=1:numJoint
-%             x=data(numFrame,3*ji-1);
-%             y=data(numFrame,3*ji);
-%             z=data(numFrame,3*ji+1);
-%             scatter3(x,y,z)
-%             hold on
-%         end
+        figure
+        for ji=1:numJoint
+            x=data(numFrame,3*ji-1);
+            y=data(numFrame,3*ji);
+            z=data(numFrame,3*ji+1);
+            scatter3(x,y,z)
+            hold on
+        end
         
     end
 end
