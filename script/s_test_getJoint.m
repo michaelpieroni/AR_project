@@ -53,3 +53,5 @@ scatter3(joint(numFrame,1),joint(numFrame,2),joint(numFrame,3),'filled')
 [orientYaw]=arGet(data,'angle','FootRight','yaw');
 
 
+
+
