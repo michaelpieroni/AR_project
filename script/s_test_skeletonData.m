@@ -23,7 +23,7 @@ for si=1:length(Snum)
         [data]=arDataImport(dataDir,si,ei,'skeleton','angle&skeleton');
         
         numFrame=1;
-        
+        [ FV ] = arFeatureVectorAbu( data )
         numJoint=arGet(data,'number of joint');
 %         numJoint=(size(data(numFrame,2:end),2))/3;
         dataPos=arGet(data,'position');

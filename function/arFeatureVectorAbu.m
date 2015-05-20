@@ -4,7 +4,7 @@ function [ FV ] = arFeatureVectorAbu( DATA )
 
 
 FVname={'bodyOrient';'headOrient';'shoulderRightOrient';'shoulderleftOrient';
-        'handRightPos';'elbowRightPos','handLeftPos';'elbowLeftPos'};
+        'handRightPos';'elbowRightPos';'handLeftPos';'elbowLeftPos'};
 numFV=8;
 		 
          deltaX_Hand_righ_Hipcenter = arGet(DATA,'position','HandRight','x')-arGet(DATA,'position','HipCenter','x');
@@ -35,9 +35,9 @@ numFV=8;
          NormalLE = sqrt(deltaX_Elbow_left_Hipcenter^2+deltaY_Elbow_left_Hipcenter^2,deltaZ_Elbow_left_Hipcenter^2)
 
 
-HipCenter= value=arGet(DATA,'position','HipCenter');
+HipCenter=arGet(DATA,'position','HipCenter');
 
-for=ii=1:numFV
+for ii=1:numFV
    FV{ii}.name=FVname{ii};
    
    switch ii
@@ -54,15 +54,15 @@ for=ii=1:numFV
             FV{ii}.value=arGet(DATA,'angle','ShoulderLeft');   %Angle
         
        case 5
-            FV{ii}.value=(arGet(DATA,'position','HandRight')-HipCenter)/NormalRH; %Position
+            FV{ii}.value=(arGet(DATA,'position','HandRight')-HipCenter)./[NormalRH,NormalRH,NormalRH]; %Position
        case 6
-            FV{ii}.value=(arGet(DATA,'position','ElbowRight')-HipCenter)/NormalRE;%Position
+            FV{ii}.value=(arGet(DATA,'position','ElbowRight')-HipCenter)./[NormalRH,NormalRH,NormalRH]; %Position
             
        case 7
-            FV{ii}.value=(arGet(DATA,'position','HandLeft')-HipCenter)/NormalLH;%Position
+            FV{ii}.value=(arGet(DATA,'position','HandLeft')-HipCenter)./[NormalRH,NormalRH,NormalRH]; %Position
             
        case 8
-            FV{ii}.value=(arGet(DATA,'position','ElbowLeft')-HipCenter)/NormalLE;%Position
+            FV{ii}.value=(arGet(DATA,'position','ElbowLeft')-HipCenter)./[NormalRH,NormalRH,NormalRH]; %Position
             
                    
        otherwise
