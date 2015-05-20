@@ -65,7 +65,7 @@ FVname={'bodyOrient';'headOrient';'shoulderRightOrient';'shoulderleftOrient';
         'handRightPos';'elbowRightPos';'handLeftPos';'elbowLeftPos'};
     
 fvSelect=FVname{2};
-fv_test=arGet(FV,'FV',fvSelect);
+fv_test=arGet(FV,'
 
 
 

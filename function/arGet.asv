@@ -53,12 +53,12 @@ switch fieldname
              output=tmp;
         end
          
-    case {'FV';'Feature Vector'; 'featurevector'}
+    case {'FV';'Feature Vector'; 'featurevecto}
         if nargin>2
              fvName=varargin{1};             
              if nargin >3
-                 coord=varargin{2};
-                 output= arGetFV(input,fvName,coord);
+                 list_fvName=varargin{2:end};
+                 output= arGetFV(input,fvName,list_fvName);
              else
                  [output]=arGetFV(input,fvName);
              end
