@@ -1,30 +1,43 @@
 function [ output ] = arGetJointData( data,jointName,varargin )
-% Data: instances x joints
-[indices]=arJointLookupTable(jointName);
 
 
-if nargin>2
-    switch varargin{1}
-        case {'x','roll'}
-            output=data(:,indices(1));
-        case {'y','pitch'}
-            output=data(:,indices(2));
-        case {'z','yaw'}
-        output=data(:,indices(3)); 
+switch jointName
+    case {'all'}
+        jointListName={'FootRight';'AnkleRight';'KneeRight';'HipRight';'HipCenter';'Spine';'ShoulderCenter';'ShoulderRight';...
+            'ElbowRight';'WristRight';'HandRight';'Head';'HandLeft';'WristLeft';'ElbowLeft';'ShoulderLeft';'HipLeft';'KneeLeft';...
+            'AnkleLeft';'FootLeft'};
         
-        otherwise
-            error('Not valid type of coordinate for the joint')
+        for ji=1:length(jointListName)
+            if nargin>2
+                [ output{ji} ] = arGetJointData( data,jointListName{ji},varargin{1});
+                output{ji}.coord=[varargin{1}];
+                output{ji}.name=jointListName{ji};
+            else
+                [ output{ji} ] = arGetJointData( data,jointListName{ji});
+                output{ji}.value
+                output{ji}.coord=['all'];
+            end
+        end
+    otherwise
+        % Data: instances x joints
+        [indices]=arJointLookupTable(jointName);
+        output.name=jointName;
+        if nargin>2               
+            output.coord=[varargin{1}];
+            output.value= arGetJointDataCoord(data,indices,output.coord);   
+        else
+
+            % x coord or roll
+            output.value(:,1)=data(:,indices(1));
+            % y coord or pitch
+            output.value(:,2)=data(:,indices(2));
+            % z coord or yaw
+            output.value(:,3)=data(:,indices(3));
+            output.coord=['all'];
     end
-else
-
-    % x coord or roll
-    output(:,1)=data(:,indices(1));
-    % y coord or pitch
-    output(:,2)=data(:,indices(2));
-    % z coord or yaw
-    output(:,3)=data(:,indices(3));
 
 end
-
 end
+
+
 
