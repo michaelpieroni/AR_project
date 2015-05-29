@@ -17,7 +17,7 @@ switch fieldname
     case {'skeleton';'position'}
         % Get skeleton position in 3D coordinates
          if isfield(input,'position')
-            [tmp]=input.position;
+            [tmp]=getfield(input,'position');
         else
             error('The input data does not have the field : 3d position of the joint')
          end
@@ -26,7 +26,8 @@ switch fieldname
              jointName=varargin{1};
              if nargin >3
                  jointCoord=varargin{2};
-                 output=arGetJointData(tmp,jointName,jointCoord); 
+                 output1=arGetJointData(tmp,jointName,jointCoord); 
+                 output=output1.value;
              else
                  output=arGetJointData(tmp,jointName);   
              end
@@ -45,7 +46,8 @@ switch fieldname
              jointName=varargin{1};
              if nargin >3
                  jointCoord=varargin{2};
-                 output=arGetJointData(tmp,jointName,jointCoord); 
+                 output1=arGetJointData(tmp,jointName,jointCoord); 
+                 output=output1.value;
              else
                  output=arGetJointData(tmp,jointName);   
              end

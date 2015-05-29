@@ -63,10 +63,6 @@ close all
 [ h ] = arPlotDataStream( FV,'feature vector','all',[1:1830]);
 
 
-figure
-[ h ] = arPlotDataStream(jointALL,'position','all',[1:1830]);
-
-
 
 
 

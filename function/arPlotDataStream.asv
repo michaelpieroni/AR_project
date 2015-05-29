@@ -9,8 +9,7 @@ numData=length(data); %number of data to plot
 % 
 
 if isempty(nameList)|| strcmp(nameList,'all')
-    nData=length(data);
-    labColor=colormap(hsv(nData.*3));
+    
     for di=1:length(data)
         if isfield(data{di},'value')
             %% Check range
@@ -25,27 +24,24 @@ if isempty(nameList)|| strcmp(nameList,'all')
             switch size(data{di}.value,2)
                 case [1]
                     mData=data{di}.value(vectFR,:); 
+%                     legendList{end+1}=[data{di}.name,'',data{di}.coord];
                      legendList=arPlotAppendLegend(legendList,data{di},datatype);
-                     plot(vectFR,mData,'Color',labColor(di*3,:))
-                        hold on 
                 case [3]
                     mData=data{di}.value(vectFR,:); 
+%                     legendList{end+1}=[data{di}.name,'x'];
+%                     legendList{end+1}=[data{di}.name,'y'];
+%                     legendList{end+1}=[data{di}.name,'z'];
                     legendList=arPlotAppendLegend(legendList,data{di},datatype);
-                    plot(vectFR,mData(:,1),'Color',labColor((di-1)*3+1,:))
-                    hold on
-                    plot(vectFR,mData(:,2),'Color',labColor((di-1)*3+2,:))
-                    hold on
-                    plot(vectFR,mData(:,3),'Color',labColor((di-1)*3+3,:))
-                    hold on
                 otherwise
                     warning (['The ',num2str(di),'th element has not be plotted'])
             end
         end
-%         plot(vectFR,mData)
-%         hold on                    
+        plot(vectFR,mData)
+        hold on                    
     end
 else
-    labColor=colormap(hsv(3));
+    nData=length(data);
+    labColor=colormap(hsv(nData.*3));
     for di=1:length(data)
         if any(any(strcmp(data{di}.name,nameList))) 
                 if isfield(data{di},'value')
@@ -63,17 +59,19 @@ else
                         mData=data{di}.value(vectFR,:); 
                          legendList=arPlotAppendLegend( legendList,data{di},datatype);
                          
-                        plot(vectFR,mData,'Color',labColor(1,:))
+                        plot(vectFR,mData,labColor(di*3))
                         hold on    
                         
                     case [3]
                         mData=data{di}.value(vectFR,:); 
                         legendList=arPlotAppendLegend( legendList,data{di},datatype);
-                        plot(vectFR,mData(:,1),'Color',labColor(1,:))
+                  
+                        plot(vectFR,mData(:,1))
+                        plot(vectFR,mData(:,1),'Color',labColor((di-1)*3+1,:))
                         hold on
-                        plot(vectFR,mData(:,2),'Color',labColor(2,:))
+                        plot(vectFR,mData(:,2),labColor((di-1)*3+2))
                         hold on
-                        plot(vectFR,mData(:,3),'Color',labColor(3,:))
+                        plot(vectFR,mData(:,3),labColor((di-1)*3+3))
                         hold on
                         
                     otherwise
